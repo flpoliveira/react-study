@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import TechItem from './TechItem';
 
 
 class TechList extends Component {
@@ -15,6 +15,7 @@ class TechList extends Component {
   
   handleInputChange = e =>{
     // console.log(e.target.value);
+
     this.setState({ novoPais: e.target.value});
 
   }
@@ -38,16 +39,11 @@ class TechList extends Component {
 
   render()
   {
-7
+
     return (
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.paises.map(pais => (
-            <li key={pais}>
-              {pais}
-              <button onClick={ () => this.handleDelete(pais)} type="button">Remover</button>
-            </li>
-          ))}
+          {this.state.paises.map(pais => <TechItem key={pais}  pais={pais} onDelete={() => this.handleDelete(pais)}/>)}
         </ul>
         <input 
           type='text' 
