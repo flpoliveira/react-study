@@ -17,3 +17,5 @@ Trocar de Dependecies para devDependecies.
 <code>yarn add file-loader -D</code>
 
 <code>yarn add @babel/plugin-proposal-class-properties -D</code>
+
+<code>yarn add prop-type</code>

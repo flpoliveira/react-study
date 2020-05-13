@@ -44,6 +44,7 @@ class TechList extends Component {
       <form onSubmit={this.handleSubmit}>
         <ul>
           {this.state.paises.map(pais => <TechItem key={pais}  pais={pais} onDelete={() => this.handleDelete(pais)}/>)}
+          <TechItem />
         </ul>
         <input 
           type='text' 
