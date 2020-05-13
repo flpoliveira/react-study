@@ -13,3 +13,5 @@ Trocar de Dependecies para devDependecies.
 <code>yarn add webpack-dev-server -D</code>
 
 <code>yarn add style-loader css-loader -D</code>
+
+<code>yarn add file-loader -D</code>

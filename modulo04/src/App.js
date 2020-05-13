@@ -1,9 +1,11 @@
 import React from 'react';
 import './App.css';
 
+import carbonara from './assets/carbonara.jpg';
+
 function App()
 {
-  return <h1>Hello Rocketseat</h1>
+  return <img src={carbonara}/>
 }
 
 export default App;
