@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 
 class TechList extends Component {
   state = {
+    novoPais: '',
     paises: [
       'Brasil',
       'Espanha',
@@ -12,15 +13,40 @@ class TechList extends Component {
     ]
   };
   
+  handleInputChange = e =>{
+    // console.log(e.target.value);
+    this.setState({ novoPais: e.target.value});
+
+  }
+
+  handleSubmit = e =>{
+    e.preventDefault();
+    
+    console.log(this.state.novoPais);
+    this.setState({ 
+      paises: [...this.state.paises, this.state.novoPais],
+      novoPais: ''
+    });
+  
+  }
+
   render()
   {
-    console.log(this.state);
+7
     return (
-      <ul>
-        <li>Brasil</li>
-        <li>Espanha</li>
-        <li>Italia</li>
-      </ul>
+      <form onSubmit={this.handleSubmit}>
+        <ul>
+          {this.state.paises.map(pais => <li key={pais}>{pais}</li>)}
+        </ul>
+        <input 
+          type='text' 
+          onChange={this.handleInputChange}
+          value={this.state.novoPais}
+        />
+        <br/>
+        <br/>
+        <button type="submit">Enviar</button>
+      </form>
     );
   }
 }
