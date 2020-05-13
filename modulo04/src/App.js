@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
 
-import carbonara from './assets/carbonara.jpg';
+import TechList from './components/TechList';
+
 
 function App()
 {
-  return <img src={carbonara}/>
+  return <TechList />
 }
+
 
 export default App;
