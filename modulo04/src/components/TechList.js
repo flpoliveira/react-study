@@ -6,13 +6,31 @@ class TechList extends Component {
   state = {
     novoPais: '',
     paises: [
-      'Brasil',
-      'Espanha',
-      'Italia',
-      'França'
+      
     ]
   };
   
+  //Executado assim que o componente aparece em tela  
+  componentDidMount(){
+    const paises = localStorage.getItem('paises');
+    if(paises)
+    {
+      this.setState({ paises: JSON.parse(paises)});
+    }
+
+  }
+  //Executado sempre que houver alterações nas props ou estado
+  componentDidUpdate(_, prevState) {
+    if(prevState.paises != this.state.paises)
+    {
+      localStorage.setItem('paises', JSON.stringify(this.state.paises));
+    }
+  }
+  //Quando o componente deixa de existir
+  componentWillUnmount() {
+    
+  }
+
   handleInputChange = e =>{
     // console.log(e.target.value);
 
@@ -44,7 +62,6 @@ class TechList extends Component {
       <form onSubmit={this.handleSubmit}>
         <ul>
           {this.state.paises.map(pais => <TechItem key={pais}  pais={pais} onDelete={() => this.handleDelete(pais)}/>)}
-          <TechItem />
         </ul>
         <input 
           type='text' 
