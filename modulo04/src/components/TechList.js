@@ -30,13 +30,24 @@ class TechList extends Component {
   
   }
 
+  handleDelete = (pais) =>{
+    this.setState({
+      paises: this.state.paises.filter(t => t != pais)
+    });
+  }
+
   render()
   {
 7
     return (
       <form onSubmit={this.handleSubmit}>
         <ul>
-          {this.state.paises.map(pais => <li key={pais}>{pais}</li>)}
+          {this.state.paises.map(pais => (
+            <li key={pais}>
+              {pais}
+              <button onClick={ () => this.handleDelete(pais)} type="button">Remover</button>
+            </li>
+          ))}
         </ul>
         <input 
           type='text' 
