@@ -5,5 +5,9 @@
 Trocar de Dependecies para devDependecies.
 
 <code>yarn add react react-dom</code>
+
+
 <code>yarn add babel-loader -D</code>
+
+
 <code>yarn add webpack-dev-server -D</code>
