@@ -2,10 +2,10 @@ import React from 'react';
 
 // import { Container } from './styles';
 
-function Repository() {
+function Repository({ match }) {
   return (
     <h1>
-     Repository
+     Repository {decodeURIComponent(match.params.repository)}
     </h1>
   );
 }
