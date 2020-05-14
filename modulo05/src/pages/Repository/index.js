@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import api from '../../services/api';
 
 import Container from '../../components/Container';
-import { Loading, Owner } from './styles';
+import { Loading, Owner, IssueList, Label } from './styles';
 
 class Repository extends Component {
   static propTypes = {
@@ -30,11 +30,12 @@ class Repository extends Component {
       api.get(`/repos/${repoName}/issues`, {
         params: {
           state: 'open',
-          per_page: 5,
+          per_page: 10,
         },
       }),
     ]);
 
+    console.log(issues.data);
     this.setState({
       repository: repository.data,
       issues: issues.data,
@@ -55,6 +56,25 @@ class Repository extends Component {
           <h1>{repository.name}</h1>
           <p>{repository.description}</p>
         </Owner>
+        <IssueList>
+          {issues.map( issue => (
+            <li key={String(issue.id)}>
+              <img src={issue.user.avatar_url} alt={issue.user.login} />
+              <div>
+                <strong>
+                  <a href={issue.html_url}>{issue.title}</a>
+
+                  {issue.labels.map(label => (
+                    <Label key={String(label.id)} bg={`#${label.color}`}>{label.name}</Label>
+                  ))
+                  }
+
+                </strong>
+                <p> {issue.user.login}</p>
+              </div>
+            </li>
+          ))}
+        </IssueList>
       </Container>
     );}
 }
