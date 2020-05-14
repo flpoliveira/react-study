@@ -7,3 +7,5 @@
 ``` yarn add styled-components ```
 
 ``` yarn add react-icons ```
+
+``` yarn add axios ```
